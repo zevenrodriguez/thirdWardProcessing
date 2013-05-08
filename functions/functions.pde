@@ -1,7 +1,5 @@
-
-int a = 1;
-
-boolean fromFunction = false;
+int a = 0;
+boolean leftRight = false;
 
 void setup() {
 
@@ -10,51 +8,50 @@ void setup() {
 
 
 void draw() {
-  background(255);
-  //println(a);
-
-  //fromFunction = returning();
-  //println(fromFunction);
-
-  move();
-  ellipse(a, height/2, 100, 100);
-
-  if (check()) {
-
-    reset();
-  }
+  background(100);
+  
+  //move();
+  moveLeftRight(leftRight);
+  check();
+  
+  ellipse(a, height/2,100,100);
+ 
 }
 
 
-void move() {
 
+void move(){
+  
   a = a + 1;
+ // a++;
+  
 }
 
-void reset() {
-
-  a = 0;
-}
-
-void multiplier(int multi) {
-
-  a = a * multi;
-}
-
-boolean check() {
-
-  if (a> width) {
-
-    return true;
+void moveLeftRight(boolean direction){
+  
+  
+  if(direction == false){
+    
+    a = a + 1;
+    
+  }else if(direction == true){
+    
+    a = a - 1;
+    
   }
-  else {
-
-    return false;
-  }
+  
+  
 }
 
-void mouseClicked() {
-
-  //add(); 
-  multiplier(3);
+void check(){
+ 
+ if (a > width) {
+  
+  leftRight = true;
+   
+ }else if(a < width){
+   
+   leftRight = false;
+ }
+  
 }
